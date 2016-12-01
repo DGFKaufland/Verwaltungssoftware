@@ -1,0 +1,129 @@
+<script>
+$( document ).ready(function() {
+	
+	
+	var departuretype_id = localStorage.getItem("editDepartureTypeID");
+	var country = localStorage.getItem("editCountry");
+	var description = localStorage.getItem("editDescription");
+	var limit_value = localStorage.getItem("editLimit_value");
+	
+selectContent(departuretype_id,country,description,limit_value);
+
+});
+
+
+function selectContent(departuretype_id,country,description,limit_value){
+	
+	//Es wird eine Verzoegerung benötigt, da der Content sonst nicht immer gesetzt wird	
+		setTimeout(wait, 20);
+	
+		function wait(){
+			  $('#editShowCountries').val(country);
+			  editDepartureTypeForm.editDepartureTypeDescription.value=description;
+			  editDepartureTypeForm.editDepartureTypeLimit_value.value=limit_value;
+			  editDepartureTypeForm.editDepartureTypeId.value=departuretype_id;			  
+			   
+			  showContentDepartureType(country,description);
+			  
+			}			
+}
+
+
+function showContentDepartureType(country,description) {
+$( "p" ).html("");
+$( "p" ).append("Land: " + country);
+$( "p" ).append("<br>");
+$( "p" ).append("Abteilung: " + description);
+}
+
+
+
+function showDescription() {
+	 
+	 if($( "#editShowCountries option:selected").text() == "Bitte Land auswaehlen"){
+		 	
+		 	 editDepartureTypeForm.editDepartureTypeDescription.value='';
+		 	 editDepartureTypeForm.editDepartureTypeLimit_value.value='';	 		 	
+		 	 document.getElementById('divSelectDescription').style.display = 'none';
+		 	 document.getElementById('divSelectLimitValue').style.display = 'none';
+		   	 document.getElementById('divEditDepartureType').style.display = 'none';
+  }
+	 else{
+		 
+		     editDepartureTypeForm.editDepartureTypeDescription.value='';
+	 	     editDepartureTypeForm.editDepartureTypeLimit_value.value='';	
+		 	 document.getElementById('divSelectDescription').style.display = '';
+		 	 document.getElementById('divSelectLimitValue').style.display = 'none';
+		   	 document.getElementById('divEditDepartureType').style.display = 'none';
+	}
+	 
+	
+}
+
+function showLimit_value() {
+	 
+	if ( document.getElementById('editDepartureTypeDescription').value.length <= 0) {
+		 	
+		 	 editDepartureTypeForm.editDepartureTypeLimit_value.value='';
+		 	 document.getElementById('divSelectLimitValue').style.display = 'none';
+		   	 document.getElementById('divEditDepartureType').style.display = 'none';
+ 	}
+	 else{
+	 	     editDepartureTypeForm.editDepartureTypeLimit_value.value='';	
+		 	 document.getElementById('divSelectLimitValue').style.display = '';
+		   	 document.getElementById('divEditDepartureType').style.display = 'none';
+	}
+	 
+}
+
+
+function showEditSaveButton() {
+	 
+	if ( document.getElementById('editDepartureTypeLimit_value').value.length <= 0) {
+		   	 document.getElementById('divEditDepartureType').style.display = 'none';
+ 	}
+	 else{
+		   	 document.getElementById('divEditDepartureType').style.display = '';
+	}
+	 
+}
+
+
+
+</script>
+
+<h1 class="page-header">Abteilungstyp updaten</h1>
+ <p></p>
+<form name="editDepartureTypeForm" role="form">
+		
+		<div id="divSelectCountry" class="form-group" align="right">
+            <label>Land auswaehlen</label>
+                <select id="editShowCountries" name="selectCountries" class="form-control" onchange="showDescription()">
+                <option selected>Bitte Land auswaehlen</option>
+                <option>DE</option>
+    			<option>PL</option>
+    			<option>RO</option>
+    			<option>CZ</option>
+    			<option>HR</option>
+    			<option>SK</option>
+    			<option>BG</option>
+                </select>
+        </div>
+        <div id="divSelectDescription" class="form-group" align="right">   
+		<h3>Beschreibung</h3>
+           <input type="text" name="editDepartureTypeDescription" id="editDepartureTypeDescription" class="form-control" placeholder="Bitte Beschreibung eingeben" oninput="showLimit_value()" /> 
+		</div>
+        <div id="divSelectLimitValue" class="form-group" align="right">   
+		<h3>Grenzwert</h3>
+           <input type="text" name="editDepartureTypeLimit_value" id="editDepartureTypeLimit_value" class="form-control" placeholder="Grenzwert in Grad eingeben" oninput="showEditSaveButton()"/> 
+		</div>
+		<div class="form-group" id="divEditDepartureType">
+		<h5>Departuretype ID</h5>
+             <input type="text" name="editDepartureTypeId" id="editDepartureTypeId" class="form-control" readonly />
+             <br><br>
+		<button type="button" id="btnEditDepartureTypeInDB" class="btn btn-default btn-lg">Abteilungstyp updaten</button>
+		</div>
+</form>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/DeparturesType.js"></script>
