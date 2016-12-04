@@ -1,0 +1,50 @@
+<script>
+
+</script>
+
+<h1 class="page-header">neuen Sensor anlegen</h1>
+
+<div class="form-group">
+	<h3>Sensortyp</h3>
+          <select id="selectSensortyp" class="form-control">
+    		<option>Temperatursensor</option>
+    		<option>Lichtsensor</option>
+    		<option>Feuchtigkeitssensor</option>
+  		   </select>   
+
+<h3>Länderkürzel</h3>
+           <select id="selectLänderkürzel" class="form-control">
+    		<option>DE</option>
+    		<option>RO</option>
+    		<option>HR</option>
+  		   </select>  
+
+<h3>Marktnummer</h3>
+           <input type="text" name="marktnummer" id="marktnummer" class="form-control" /> 
+    
+<h3>Abteilung</h3>
+           <select id="selectAbteilung" class="form-control">
+    		<option>MoPro</option>
+    		<option>Obst/Gemüse</option>
+    		<option>Elektro</option>
+    		<option>Fleisch/Wurst</option>
+    		<option>Käsetheke</option>
+  		   </select>
+  		   
+<h3>Bezeichnung</h3>
+            <input type="text" name="bezeichnung" id="bezeichnung" class="form-control" /> 
+            
+<h3>Wert</h3>
+            <input type="text" name="wert" id="wert" class="form-control" />  		   
+  		   
+<h3>Timestamp</h3>
+            <input type=date name="timestamp" id="timestamp" class="form-control" />   		   
+  		   (Bitte das Datum nach dem Format YYYY-MM-DD eingeben!)
+  		          
+</div>
+<div class="form-group">
+	<button type="button" id="btnWriteSensordataInDB" class="btn btn-default btn-lg">Sensordaten in DB schreiben</button>
+</div>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/main.js"></script>

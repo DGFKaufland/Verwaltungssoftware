@@ -1,0 +1,78 @@
+<script>
+
+$( document ).ready(function() {
+
+var ID = localStorage.getItem("editID");
+var Sensortyp = localStorage.getItem("editSensortyp");
+var Länderkürzel = localStorage.getItem("editLänderkürzel");
+var Marktnummer = localStorage.getItem("editMarktnummer");
+var Abteilung = localStorage.getItem("editAbteilung");
+var Bezeichnung = localStorage.getItem("editBezeichnung");
+var Wert = localStorage.getItem("editWert");
+var Timestamp = localStorage.getItem("editTimestamp");
+
+
+editSensordatenForm.editMarktnummer.value=Marktnummer;
+editSensordatenForm.editBezeichnung.value=Bezeichnung;
+editSensordatenForm.editWert.value=Wert;
+editSensordatenForm.editTimestamp.value=Timestamp;
+editSensordatenForm.editId.value=ID;
+
+
+
+
+});
+
+</script>
+
+
+
+<h1 class="page-header">Sensordaten updaten</h1>
+
+<form name="editSensordatenForm" role="form">
+<div class="form-group">
+	<h3>Sensortyp</h3>
+          <select id="editSelectSensortyp" class="form-control">
+    		<option>Temperatursensor</option>
+    		<option>Lichtsensor</option>
+    		<option>Feuchtigkeitssensor</option>
+  		   </select>   
+
+<h3>Länderkürzel</h3>
+           <select id="editSelectLänderkürzel" class="form-control">
+    		<option>DE</option>
+    		<option>RO</option>
+    		<option>HR</option>
+  		   </select>  
+
+<h3>Marktnummer</h3>
+           <input type="text" name="editMarktnummer" id="editMarktnummer" class="form-control" /> 
+    
+<h3>Abteilung</h3>
+           <select id="editSelectAbteilung" class="form-control">
+    		<option>MoPro</option>
+    		<option>Obst/Gemüse</option>
+    		<option>Elektro</option>
+    		<option>Fleisch/Wurst</option>
+    		<option>Käsetheke</option>
+  		   </select>
+  		   
+<h3>Bezeichnung</h3>
+            <input type="text" name="editBezeichnung" id="editBezeichnung" class="form-control" /> 
+            
+<h3>Wert</h3>
+            <input type="text" name="editWert" id="editWert" class="form-control" />  		   
+  		   
+<h3>Timestamp</h3>
+            <input type="text" name="editTimestamp" id="editTimestamp" class="form-control" />   		
+            
+<h3>Sensordata ID</h3>
+            <input type="text" name="editId" id="editId" class="form-control" />   	        		          
+</div>
+</form>
+<div class="form-group">
+	<button type="button" id="btnEditSensordataInDB" class="btn btn-default btn-lg">Sensordaten updaten</button>
+</div>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/main.js"></script>
