@@ -1,0 +1,84 @@
+<script>
+var host = window.location.origin;
+
+$( document ).ready(function() {
+	 document.getElementById('divShowUsersToCountry').style.display = 'none';
+	 document.getElementById('divShowUsersToCountrySaveButton').style.display = 'none';
+ });
+ 
+function showUsersToCountryContent() {
+	
+	var country = $( "#editShowCountries option:selected").val();
+	//alert(country);
+	
+	if($( "#editShowCountries option:selected").text() == "Bitte Land auswaehlen"){
+	 	 document.getElementById('divShowUsersToCountry').style.display = 'none';
+		 document.getElementById('divShowUsersToCountrySaveButton').style.display = 'none';		        
+	}
+	else{
+		$.ajax({
+			 type: 'POST',
+			 contentType: 'application/json',
+			 url: host+'/Sensoren/services/users/getAllUsersToCountry',
+			 dataType: "json",
+			 data: JSON.stringify({"country": country
+			 		}),
+			 success: function(data){
+
+	    		 $('#editShowUsersToCountry').find('option').remove().end();
+	 		    	for(var i=0;i<data.length;i++){
+	 		    		$("#editShowUsersToCountry").append($("<option value='"+data[i].id+"'>"+data[i].firstname +" " + data[i].lastname +" (" + data[i].role +") "+ "</option><br>"));
+	 		    	}
+	 		    	$("#editShowUsersToCountry").append("<option selected>Bitte User auswaehlen</option>");
+
+	 		    	 document.getElementById('divShowUsersToCountry').style.display = '';
+	 		  		 document.getElementById('divShowUsersToCountrySaveButton').style.display = 'none';		
+			 },
+			 error: function(jqXHR, textStatus, errorThrown){
+			 alert('User laden error: ' + textStatus);
+			 }
+			 });
+	}
+	
+		
+}
+ 
+function showUsersToCountrySaveButton() {
+	
+	if($( "#editShowUsersToCountry option:selected").text() == "Bitte User auswaehlen"){
+		 document.getElementById('divShowUsersToCountrySaveButton').style.display = 'none';	
+	}
+	else{
+		document.getElementById('divShowUsersToCountrySaveButton').style.display = '';
+	}
+	
+}
+
+</script>
+
+<h1 class="page-header">Nutzer bearbeiten</h1>
+
+		<div class="form-group" id="divSelectCountry">
+            <label>Land auswaehlen</label>
+                <select id="editShowCountries" name="selectCountries" class="form-control" onchange="showUsersToCountryContent()">
+                <option selected>Bitte Land auswaehlen</option>
+                <option>DE</option>
+    			<option>PL</option>
+    			<option>RO</option>
+    			<option>CZ</option>
+    			<option>HR</option>
+    			<option>SK</option>
+    			<option>BG</option>
+                </select>
+        </div>
+        <div class="form-group" id="divShowUsersToCountry">
+            <label>Nutzer auswaehlen</label>
+                <select id="editShowUsersToCountry" name="selectEditUsersToCountry" class="form-control" onchange="showUsersToCountrySaveButton()"></select>
+        </div>
+        <div class="form-group" id="divShowUsersToCountrySaveButton">
+            <button id="btnEditUser" type="button" class="btn btn-primary btn-lg">Zu aendernden Nutzer auswaehlen</button>
+        </div>
+                     
+<!-- Custom Theme JavaScript -->
+ <script src="js/Users.js"></script>
+ 
