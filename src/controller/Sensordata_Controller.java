@@ -7,7 +7,7 @@
 package controller;
 
 import java.util.Calendar;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -41,7 +41,7 @@ public class Sensordata_Controller
     public void insertSensordata (final Sensordata sensor)
     {
     	//get current Date as Timestamp
-    	Date date = new Date(Calendar.getInstance().getTime().getTime());
+    	Timestamp date = new Timestamp(Calendar.getInstance().getTime().getTime());
     	System.out.println(date);
     	//Set Timestamp to Sensor Object
     	sensor.setTimestamp(date);

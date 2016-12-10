@@ -3,7 +3,7 @@ package models;
 import java.io.Serializable;
 
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,7 +21,7 @@ public class Sensordata implements Serializable
     private int ID;
     private String logical_sensor_id;
     private String value;
-    private Date timestamp;
+    private Timestamp timestamp;
     
 
     /**
@@ -32,7 +32,7 @@ public class Sensordata implements Serializable
     }
 
 
-    public Sensordata(final Integer ID, final String logical_sensor_id, final String value, final Date timestamp)
+    public Sensordata(final Integer ID, final String logical_sensor_id, final String value, final Timestamp timestamp)
     {
         this.setID(ID);
         this.setLogical_sensor_id(logical_sensor_id);
@@ -68,12 +68,12 @@ public class Sensordata implements Serializable
 	}
 
 
-	public Date getTimestamp() {
+	public Timestamp getTimestamp() {
 		return timestamp;
 	}
 
 
-	public void setTimestamp(Date timestamp) {
+	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
 	}
 

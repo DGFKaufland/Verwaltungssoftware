@@ -65,7 +65,7 @@ public class DBStatements_Sensordata extends DBVerbindung
             stmt = con.prepareStatement( query );
             stmt.setString( 1, sensor.getLogical_sensor_id());
             stmt.setString( 2, sensor.getValue());
-            stmt.setDate( 3, sensor.getTimestamp());      
+            stmt.setTimestamp( 3, sensor.getTimestamp());       
             stmt.execute();
         }
         catch ( SQLException e )
