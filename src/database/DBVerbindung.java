@@ -41,7 +41,7 @@ public class DBVerbindung
         {
         	//com.mysql.jdbc.Driver
         	//org.mariadb.jdbc.Driver
-            Class.forName( "org.mariadb.jdbc.Driver" );
+            Class.forName( "com.mysql.jdbc.Driver" );
         }
 
         catch ( Exception e )

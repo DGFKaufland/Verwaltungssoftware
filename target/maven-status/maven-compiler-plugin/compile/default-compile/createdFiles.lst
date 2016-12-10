@@ -1,4 +1,5 @@
 database\DBStatements_Sensors.class
+controller\Sensordata_Controller.class
 controller\Sensors_Controller.class
 controller\User_Controller.class
 models\Topics.class
@@ -8,9 +9,11 @@ database\DBStatements_Topics.class
 controller\DepartureType_Controller.class
 database\DBStatements_DeparturesType.class
 models\Sensordata.class
+services\JavaWebserviceClient.class
 services\SMTP.class
 models\Departures_type.class
 models\Users.class
+database\DBStatements_Sensordata.class
 models\Sensors.class
 database\DBStatements_Users.class
 models\Stores.class
