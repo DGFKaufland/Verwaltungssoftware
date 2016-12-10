@@ -1,0 +1,83 @@
+<script>
+var host = window.location.origin;
+
+$( document ).ready(function() {
+	 document.getElementById('divShowDepartureTypesToCountry').style.display = 'none';
+	 document.getElementById('divShowDepartureTypesSaveButton').style.display = 'none';
+ });
+ 
+function showDepartureTypesToCountryContent() {
+	
+	var country = $( "#editShowCountries option:selected").val();
+	
+	if($( "#editShowCountries option:selected").text() == "Bitte Land auswaehlen"){
+	 	 document.getElementById('divShowDepartureTypesToCountry').style.display = 'none';
+		 document.getElementById('divShowDepartureTypesSaveButton').style.display = 'none';		        
+	}
+	else{
+		$.ajax({
+			 type: 'POST',
+			 contentType: 'application/json',
+			 url: host+'/Sensoren/services/departurestype/getAllDeparturesTypesToCountry',
+			 dataType: "json",
+			 data: JSON.stringify({"country": country
+			 		}),
+			 success: function(data){
+
+	    		 $('#editShowDepartureTypesToCountry').find('option').remove().end();
+	 		    	for(var i=0;i<data.length;i++){
+	 		    		$("#editShowDepartureTypesToCountry").append($("<option value='"+data[i].id+"'>"+data[i].description +" </option><br>"));
+	 		    	}
+	 		    	$("#editShowDepartureTypesToCountry").append("<option selected>Bitte Abteilungstyp auswaehlen</option>");
+
+	 		    	 document.getElementById('divShowDepartureTypesToCountry').style.display = '';
+	 		  		 document.getElementById('divShowDepartureTypesSaveButton').style.display = 'none';		
+			 },
+			 error: function(jqXHR, textStatus, errorThrown){
+			 alert('User laden error: ' + textStatus);
+			 }
+			 });
+	}
+	
+		
+}
+ 
+function showDepartureTypesEditButton() {
+	
+	if($( "#editShowDepartureTypesToCountry option:selected").text() == "Bitte Abteilungstyp auswaehlen"){
+		 document.getElementById('divShowDepartureTypesSaveButton').style.display = 'none';	
+	}
+	else{
+		document.getElementById('divShowDepartureTypesSaveButton').style.display = '';
+	}
+	
+}
+
+</script>
+
+<h1 class="page-header">Abteilungstyp bearbeiten</h1>
+
+		<div class="form-group" id="divSelectCountry">
+            <label>Land auswaehlen</label>
+                <select id="editShowCountries" name="selectCountries" class="form-control" onchange="showDepartureTypesToCountryContent()">
+                <option selected>Bitte Land auswaehlen</option>
+                <option>DE</option>
+    			<option>PL</option>
+    			<option>RO</option>
+    			<option>CZ</option>
+    			<option>HR</option>
+    			<option>SK</option>
+    			<option>BG</option>
+                </select>
+        </div>
+        <div class="form-group" id="divShowDepartureTypesToCountry">
+            <label>Abteilungstyp auswaehlen</label>
+                <select id="editShowDepartureTypesToCountry" name="selectEditDepartureTypesToCountry" class="form-control" onchange="showDepartureTypesEditButton()"></select>
+        </div>
+        <div class="form-group" id="divShowDepartureTypesSaveButton">
+            <button id="btnEditDepartureType" type="button" class="btn btn-primary btn-lg">Zu aendernden Abteilungstyp auswaehlen</button>
+        </div>
+                     
+<!-- Custom Theme JavaScript -->
+ <script src="js/DeparturesType.js"></script>
+ 

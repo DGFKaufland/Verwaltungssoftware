@@ -1,0 +1,345 @@
+<head>
+<link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.css">
+<script type="text/javascript" src="js/bootstrap-clockpicker.min.js"></script>
+</head>
+
+<script>
+
+var host = window.location.origin;
+
+$( document ).ready(function() {
+	
+	  // showEditStore_managerContent();
+	 //  showEditSales_managerContent();
+	//   showEditStore_leitstandContent();
+
+	var ID = localStorage.getItem("editID");
+	var LK = localStorage.getItem("editLaenderkuerzel");
+	var Marktnummer = localStorage.getItem("editMarktnummer");	
+	var Oeffnungszeiten_von = localStorage.getItem("editOeffnungszeiten_von");
+   	var Oeffnungszeiten_bis = localStorage.getItem("editOeffnungszeiten_bis");
+	var Marktleiter_id = localStorage.getItem("editMarktleiter_id");
+   	//var Marktleiter_name = localStorage.getItem("editMarktleiter_name");
+   	var Verkaufsleiter_id = localStorage.getItem("editVerkaufsleiter_id");
+   //var Verkaufsleiter_name = localStorage.getItem("editVerkaufsleiter_name");
+   	var Leitstand_id = localStorage.getItem("editLeitstand_id");
+   	//var Leitstand_name = localStorage.getItem("editLeitstand_name");
+	
+   	
+   	 showEditStore_managerToCountryContent(LK);
+	 showEditSales_managerToCountryContent(LK);
+	 showEditStore_leitstandToCountryContent(LK);
+   	
+/*
+alert(ID + LK + Marktnummer + Marktleiter + Verkaufsleiter + Serveradresse);
+*/
+selectContent(LK,Marktnummer,Oeffnungszeiten_von,Oeffnungszeiten_bis,Marktleiter_id,Verkaufsleiter_id,Leitstand_id,ID);
+
+});
+
+function selectContent(LK,Marktnummer,Oeffnungszeiten_von,Oeffnungszeiten_bis,Marktleiter_id,Verkaufsleiter_id,Leitstand_id,ID){
+	//Es wird eine Verzoegerung benötigt, da der Content sonst nicht gesetz werden kann	
+		setTimeout(wait, 20);
+		function wait(){
+			
+				//alert("MLID: " + Marktleiter_id + "   VKLID: "+Verkaufsleiter_id + "   LSID: " +Leitstand_id)
+			  $('#selectEditStore_manager').val(Marktleiter_id);
+			  $('#selectEditSales_manager').val(Verkaufsleiter_id);
+			  $('#selectEditStore_leitstand').val(Leitstand_id);
+			  
+			  editStoreForm.editTimepicker_from.value=Oeffnungszeiten_von;
+			  editStoreForm.editTimepicker_to.value=Oeffnungszeiten_bis;
+			  
+			  editStoreForm.editStoreId.value=ID;
+			  editStoreForm.editHLId.value=Marktleiter_id;
+			  editStoreForm.editVKLId.value=Verkaufsleiter_id;
+			  editStoreForm.editLSId.value=Leitstand_id;
+  
+			  showContentStore(LK,Marktnummer);
+			}			
+}
+
+/*
+function showEditStore_managerContent() {
+    $.ajax({
+		    dataType: 'json',
+		    success: function(data) {
+		    	$('#selectEditStore_manager').find('option').remove().end();
+		    	for(var i=0;i<data.getAllStoreManagersForStore.length;i++){
+		    		$("#selectEditStore_manager").append($("<option value='"+data.getAllStoreManagersForStore[i].ID+"'>"+data.getAllStoreManagersForStore[i].firstname +" " + data.getAllStoreManagersForStore[i].lastname +"</option><br>"));
+		    	}
+		    	$("#selectEditStore_manager").append("<option selected>Bitte HL auswaehlen</option>");
+		    },
+		    	url: host+'/Sensoren/services/users/getAllStoreManagers'
+    });
+ }
+
+function showEditSales_managerContent() {
+    $.ajax({
+		    dataType: 'json',
+		    success: function(data) {
+		    	$('#selectEditSales_manager').find('option').remove().end();
+		    	for(var i=0;i<data.getAllSalesManagersForStore.length;i++){
+		    		$("#selectEditSales_manager").append($("<option value='"+data.getAllSalesManagersForStore[i].ID+"'>"+data.getAllSalesManagersForStore[i].firstname +" " + data.getAllSalesManagersForStore[i].lastname +"</option><br>"));
+		    	}
+		    	$("#selectEditSales_manager").append("<option selected>Bitte VKL auswaehlen</option>");
+		    },
+		    	url: host+'/Sensoren/services/users/getAllSalesManagers'
+    });
+ }
+
+function showEditStore_leitstandContent() {
+    $.ajax({
+		    dataType: 'json',
+		    success: function(data) {
+		    	$('#selectEditStore_leitstand').find('option').remove().end();
+		    	for(var i=0;i<data.getAllLeitstand.length;i++){
+		    		$("#selectEditStore_leitstand").append($("<option value='"+data.getAllLeitstand[i].ID+"'>"+data.getAllLeitstand[i].firstname +" " + data.getAllLeitstand[i].lastname +"</option><br>"));
+		    	}
+		    	$("#selectEditStore_leitstand").append("<option selected>Bitte LS auswaehlen</option>");
+		    },
+		    	url: host+'/Sensoren/services/users/getAllLeitstand'
+    });
+ }
+*/
+
+
+function showEditStore_managerToCountryContent(LK){
+	
+	$.ajax({
+		 type: 'POST',
+		 contentType: 'application/json',
+		 url: host+'/Sensoren/services/users/getAllStoreManagersForCountry',
+		 dataType: "json",
+		 data: JSON.stringify({"country": LK
+		 		}),
+		 success: function(data){
+
+			 $('#selectEditStore_manager').find('option').remove().end();
+		    	for(var i=0;i<data.length;i++){
+		    		$("#selectEditStore_manager").append($("<option value='"+data[i].id+"'>"+data[i].firstname + " " + data[i].lastname +"</option><br>"));
+		    	}
+		    	$("#selectEditStore_manager").append("<option selected>Bitte HL auswaehlen</option>");
+
+		   	 
+		 },
+		 error: function(jqXHR, textStatus, errorThrown){
+		 alert('UserHL laden error: ' + textStatus);
+		 }
+		 });
+	
+}
+
+function showEditSales_managerToCountryContent(LK){
+	
+	$.ajax({
+		 type: 'POST',
+		 contentType: 'application/json',
+		 url: host+'/Sensoren/services/users/getAllSalesManagersForCountry',
+		 dataType: "json",
+		 data: JSON.stringify({"country": LK
+		 		}),
+		 success: function(data){
+
+			 $('#selectEditSales_manager').find('option').remove().end();
+		    	for(var i=0;i<data.length;i++){
+		    		$("#selectEditSales_manager").append($("<option value='"+data[i].id+"'>"+data[i].firstname + " " + data[i].lastname +"</option><br>"));
+		    	}
+		    	$("#selectEditSales_manager").append("<option selected>Bitte VKL auswaehlen</option>");
+
+					
+		 },
+		 error: function(jqXHR, textStatus, errorThrown){
+		 alert('UserVKL laden error: ' + textStatus);
+		 }
+		 });
+}
+
+
+function showEditStore_leitstandToCountryContent(LK){
+	
+	$.ajax({
+		 type: 'POST',
+		 contentType: 'application/json',
+		 url: host+'/Sensoren/services/users/getAllLeitstandForCountry',
+		 dataType: "json",
+		 data: JSON.stringify({"country": LK
+		 		}),
+		 success: function(data){
+
+			 $('#selectEditStore_leitstand').find('option').remove().end();
+		    	for(var i=0;i<data.length;i++){
+		    		$("#selectEditStore_leitstand").append($("<option value='"+data[i].id+"'>"+data[i].firstname + " " + data[i].lastname +"</option><br>"));
+		    	}
+		    	$("#selectEditStore_leitstand").append("<option selected>Bitte LS auswaehlen</option>");
+
+			 
+		 },
+		 error: function(jqXHR, textStatus, errorThrown){
+		 alert('UserLS laden error: ' + textStatus);
+		 }
+		 });
+}
+
+
+
+
+function showOpeningHoursTo(){
+	
+	editStoreForm.editTimepicker_to.value='';
+	$('#selectEditStore_manager').val("Bitte HL auswaehlen");
+	$('#selectEditSales_manager').val("Bitte VKL auswaehlen");
+	$('#selectEditStore_leitstand').val("Bitte LS auswaehlen");
+	 
+	if ( document.getElementById('editTimepicker_from').value.length <= 0) {
+		
+		 document.getElementById('divOpeningHoursTo').style.display = 'none';
+		 document.getElementById('divStoreManager').style.display = 'none';
+		 document.getElementById('divSalesManager').style.display = 'none';
+		 document.getElementById('divLeitstand').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+ }
+	else{
+		 document.getElementById('divOpeningHoursTo').style.display = '';
+		 document.getElementById('divStoreManager').style.display = 'none';
+		 document.getElementById('divSalesManager').style.display = 'none';
+		 document.getElementById('divLeitstand').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+
+function showStoreManager(){
+	
+	$('#selectEditStore_manager').val("Bitte HL auswaehlen");
+	$('#selectEditSales_manager').val("Bitte VKL auswaehlen");
+	$('#selectEditStore_leitstand').val("Bitte LS auswaehlen");
+
+if ( document.getElementById('editTimepicker_to').value.length <= 0) {
+	
+	 document.getElementById('divStoreManager').style.display = 'none';
+	 document.getElementById('divSalesManager').style.display = 'none';
+	 document.getElementById('divLeitstand').style.display = 'none';
+	 document.getElementById('divShowSaveButton').style.display = 'none';		        
+}
+else{
+	
+	 document.getElementById('divStoreManager').style.display = '';
+	 document.getElementById('divSalesManager').style.display = 'none';
+	 document.getElementById('divLeitstand').style.display = 'none';
+	 document.getElementById('divShowSaveButton').style.display = 'none';		
+	
+	} 
+}
+
+function showSalesManager() {
+
+	$('#selectEditSales_manager').val("Bitte VKL auswaehlen");
+	$('#selectEditStore_leitstand').val("Bitte LS auswaehlen");
+
+	if($( "#selectEditStore_manager option:selected").text() == "Bitte HL auswaehlen"){
+		 document.getElementById('divSalesManager').style.display = 'none';
+		 document.getElementById('divLeitstand').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+	}
+	else{
+		
+		 document.getElementById('divSalesManager').style.display = '';
+		 document.getElementById('divLeitstand').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+		
+		
+		} 
+	}
+
+
+function showLeitstand() {
+	
+	$('#selectEditStore_leitstand').val("Bitte LS auswaehlen");
+
+	if($( "#selectEditSales_manager option:selected").text() == "Bitte VKL auswaehlen"){
+		 document.getElementById('divLeitstand').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+	}
+	else{
+		
+		document.getElementById('divLeitstand').style.display = '';
+		document.getElementById('divShowSaveButton').style.display = 'none';		
+
+		} 
+	}
+
+
+function showSaveButton() {
+
+	if($( "#selectEditStore_leitstand option:selected").text() == "Bitte LS auswaehlen"){
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+	}
+	else{
+		document.getElementById('divShowSaveButton').style.display = '';		
+		} 
+	}
+
+
+
+
+
+function showContentStore(LK,Marktnummer) {
+$( "p" ).html("");
+$( "p" ).append("Land: " + LK);
+$( "p" ).append("<br>");
+$( "p" ).append("Marktnummer: " + Marktnummer);
+}
+
+</script>
+
+<h1 class="page-header">Markt updaten</h1>
+ <p></p>
+<form name="editStoreForm" role="form">
+<div class="form-group">  		    		   
+ <div id="divOpeningHoursFrom"> 		   
+<h3>Oeffnungszeiten von</h3>
+           <input type="text" class="form-control" value="Zeit auswählen" id='editTimepicker_from'  onchange="showOpeningHoursTo()">
+</div>
+           
+<div id="divOpeningHoursTo">          
+<h3>Oeffnungszeiten bis</h3>
+           <input type="text" class="form-control" value="Zeit auswählen" id='editTimepicker_to'  onchange="showStoreManager()">
+</div>
+			
+<div id="divStoreManager">			
+<h3>Hausleiter</h3>
+			<select id="selectEditStore_manager" class="form-control" onchange="showSalesManager()">
+            </select>  
+</div>
+
+<div id="divSalesManager">
+<h3>Verkaufsleiter</h3>
+           <select id="selectEditSales_manager" class="form-control" onchange="showLeitstand()">
+    	   </select>  
+</div>
+    	   
+<div id="divLeitstand">   	   
+<h3>Leitstand</h3>
+           <select id="selectEditStore_leitstand" class="form-control" onchange="showSaveButton()">
+    	   </select>
+</div>
+ 
+<div class="form-group" id="divShowSaveButton">  	   
+<h3>Store ID</h3>
+            <input type="text" name="editStoreId" id="editStoreId" class="form-control" readonly />   	        		          
+<h3>HL ID</h3>
+            <input type="text" name="editHLId" id="editHLId" class="form-control" readonly />   	        		          
+<h3>VKL ID</h3>
+            <input type="text" name="editVKLId" id="editVKLId" class="form-control" readonly />   	        		          
+<h3>LS ID</h3>
+            <input type="text" name="editLSId" id="editLSId" class="form-control" readonly />   	        		          
+<br><br>
+<button type="button" id="btnEditStoreInDB" class="btn btn-default btn-lg">Sensordaten updaten</button>
+</div>
+</div>
+</form>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="js/Stores.js"></script>
