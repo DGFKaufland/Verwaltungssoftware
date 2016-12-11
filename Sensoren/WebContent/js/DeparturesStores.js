@@ -27,7 +27,7 @@ $(function(){
 			    	}
 			    	$("#selectCountry").append("<option selected>Bitte Land auswaehlen</option>");	
 			    },
-			    	url: host+'/Sensoren/services/stores/getAllCountries'
+			    	url: host+'/services/stores/getAllCountries'
 	    });
 	 }		
 	 
@@ -64,7 +64,7 @@ $(function(){
   	   	 $.ajax({
   	   	   	 type: 'POST',
   	   	   	 contentType: 'application/json',
-  	   	   	 url: host+'/Sensoren/services/departures/createDepartureToStore',
+  	   	   	 url: host+'/services/departures/createDepartureToStore',
   	   	   	 dataType: "json",
   	   	   	 data: JSON.stringify(arrDeparture),  	   	   		
   	   	   	 success: function(data, textStatus, jqXHR){   	   	
@@ -117,7 +117,7 @@ $(function(){
  			    	}
  			    	$("#editShowCountries").append("<option selected>Bitte Land auswaehlen</option>");	
  			    },
- 			    	url: host+'/Sensoren/services/stores/getAllCountries'
+ 			    	url: host+'/services/stores/getAllCountries'
  	    });
  	 }		 	
   	   
@@ -148,7 +148,7 @@ function editDeparture(){
      	$.ajax({
            	 type: 'POST',
            	 contentType: 'application/json',
-           	 url: host+'/Sensoren/services/departures/editShowDepartureToStore',
+           	 url: host+'/services/departures/editShowDepartureToStore',
            	 dataType: "json",
            	 data: JSON.stringify({
            		"id": editDepartureID
@@ -183,7 +183,7 @@ function editGetAllWBLForCountry(){
  $.ajax({
 	 type: 'POST',
 	 contentType: 'application/json',
-	 url: host+'/Sensoren/services/users/getAllWBLForCountry',
+	 url: host+'/services/users/getAllWBLForCountry',
 	 dataType: "json",
 	 data: JSON.stringify({"country": country
 	 		}),
@@ -232,7 +232,7 @@ function editGetAllWBLForCountry(){
    		$.ajax({
        	 type: 'POST',
        	 contentType: 'application/json',
-       	 url: host+'/Sensoren/services/departures/editDepartureToStore',
+       	 url: host+'/services/departures/editDepartureToStore',
        	 dataType: "json",
        	 data: JSON.stringify({
        		 "id": editDepartureId,
@@ -281,7 +281,7 @@ function editGetAllWBLForCountry(){
 			    	}
 			    	$("#selectDeleteCountry").append("<option selected>Bitte Land auswaehlen</option>");	
 			    },
-			    	url: host+'/Sensoren/services/stores/getAllCountries'
+			    	url: host+'/services/stores/getAllCountries'
 	    });
 	 }
   	 
@@ -301,7 +301,7 @@ function editGetAllWBLForCountry(){
     	    	 $.ajax({
     	    	 type: 'POST',
     	    	 contentType: 'application/json',
-    	    	 url: host+'/Sensoren/services/departures/deleteDepartureToStore',
+    	    	 url: host+'/services/departures/deleteDepartureToStore',
     	    	 dataType: "json",
     	    	 data: JSON.stringify({"id": DepartureIdToDelete
     			 		}),

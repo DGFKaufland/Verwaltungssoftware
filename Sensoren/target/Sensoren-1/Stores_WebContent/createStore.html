@@ -94,7 +94,7 @@ else{
 	$.ajax({
 		 type: 'POST',
 		 contentType: 'application/json',
-		 url: host+'/Sensoren/services/users/getAllStoreManagersForCountry',
+		 url: host+'/services/users/getAllStoreManagersForCountry',
 		 dataType: "json",
 		 data: JSON.stringify({"country": country
 		 		}),
@@ -132,7 +132,7 @@ function showSalesManager() {
 		$.ajax({
 			 type: 'POST',
 			 contentType: 'application/json',
-			 url: host+'/Sensoren/services/users/getAllSalesManagersForCountry',
+			 url: host+'/services/users/getAllSalesManagersForCountry',
 			 dataType: "json",
 			 data: JSON.stringify({"country": country
 			 		}),
@@ -169,7 +169,7 @@ function showLeitstand() {
 		$.ajax({
 			 type: 'POST',
 			 contentType: 'application/json',
-			 url: host+'/Sensoren/services/users/getAllLeitstandForCountry',
+			 url: host+'/services/users/getAllLeitstandForCountry',
 			 dataType: "json",
 			 data: JSON.stringify({"country": country
 			 		}),

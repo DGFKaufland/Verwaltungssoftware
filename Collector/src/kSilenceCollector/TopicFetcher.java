@@ -18,7 +18,7 @@ public class TopicFetcher {
 
 		try {
 
-			URL url = new URL("http://dgf-vsw.azurewebsites.net/Sensoren/services/topics/getAllTopics");
+			URL url = new URL("http://dgf-vsw.azurewebsites.net/services/topics/getAllTopics");
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");

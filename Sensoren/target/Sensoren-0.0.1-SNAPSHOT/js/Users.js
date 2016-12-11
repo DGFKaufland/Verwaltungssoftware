@@ -34,7 +34,7 @@ $(function(){
   	   	 $.ajax({
   	   	   	 type: 'POST',
   	   	   	 contentType: 'application/json',
-  	   	   	 url: host+'/Sensoren/services/users/createUser',
+  	   	   	 url: host+'/services/users/createUser',
   	   	   	 dataType: "json",
   	   	   	 data: JSON.stringify({
   	   	   		 "country": user_country,
@@ -78,7 +78,7 @@ $(function(){
 	 		    		$("#editShowUsers").append($("<option value='"+data.getAllUsers[i].ID+"'>"+data.getAllUsers[i].firstname +" " + data.getAllUsers[i].lastname +"</option><br>"));
 	 		    	}
 	 		    },
-	 		    	url: host+'/Sensoren/services/users/getAllUsers'
+	 		    	url: host+'/services/users/getAllUsers'
 	        });
 	        
 	     } 
@@ -95,7 +95,7 @@ function editUser(){
     	 $.ajax({
            	 type: 'POST',
            	 contentType: 'application/json',
-           	 url: host+'/Sensoren/services/users/editShowUser',
+           	 url: host+'/services/users/editShowUser',
            	 dataType: "json",
            	 data: JSON.stringify({"id": editUserID
            	 		}),
@@ -152,7 +152,7 @@ function editUser(){
  	 $.ajax({
         	 type: 'POST',
         	 contentType: 'application/json',
-        	 url: host+'/Sensoren/services/users/editUser',
+        	 url: host+'/services/users/editUser',
         	 dataType: "json",
         	 data: JSON.stringify({"id": editID,
         		 "country": editUser_country,
@@ -203,7 +203,7 @@ function editUser(){
  		    		$("#deleteShowUsers").append($("<option value='"+data.getAllUsers[i].ID+"'>"+data.getAllUsers[i].firstname +" " + data.getAllUsers[i].lastname +"</option><br>"));
  		    	}
  		    },
- 		    	url: host+'/Sensoren/services/users/getAllUsers'
+ 		    	url: host+'/services/users/getAllUsers'
         });
      } 
   	*/
@@ -223,7 +223,7 @@ function editUser(){
     	    	 $.ajax({
     	    	 type: 'POST',
     	    	 contentType: 'application/json',
-    	    	 url: host+'/Sensoren/services/users/deleteUser',
+    	    	 url: host+'/services/users/deleteUser',
     	    	 dataType: "json",
     	    	 data: JSON.stringify({"id": UserIdToDelete
     			 		}),

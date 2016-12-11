@@ -201,7 +201,6 @@ public class Sensors_Controller
     
     public void createFileForSensor (Sensors sen)
     {
-    	String Hardware_ID = sen.getHardware_id();
     	String Logische_ID = sen.getLogical_id();
     	String Sensortyp = sen.getSensor_type();
     	String Status = sen.getStatus();

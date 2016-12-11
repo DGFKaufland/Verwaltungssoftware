@@ -19,7 +19,7 @@ function showUsersToCountryContent() {
 		$.ajax({
 			 type: 'POST',
 			 contentType: 'application/json',
-			 url: host+'/Sensoren/services/users/getAllUsersToCountry',
+			 url: host+'/services/users/getAllUsersToCountry',
 			 dataType: "json",
 			 data: JSON.stringify({"country": country
 			 		}),

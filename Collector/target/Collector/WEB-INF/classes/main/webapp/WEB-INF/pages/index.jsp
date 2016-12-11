@@ -16,7 +16,7 @@
 			<a href="stop.htm">Collection anhalten</a> <br> <a
 				href="switch.htm">MQTT Gateway umschalten</a> <br> <a
 				href="publish.htm">Sampledaten publishen</a> <br> <br> <a
-				href="http://dgf-vsw.azurewebsites.net/Sensoren/">Zur&uuml;ck
+				href="http://dgf-vsw.azurewebsites.net/">Zur&uuml;ck
 				zur Sensordaten Webservice Hauptseite</a>
 
 		</h4>

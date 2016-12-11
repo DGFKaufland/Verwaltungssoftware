@@ -27,7 +27,7 @@ function showCountriesContent(){
 		$.ajax({
 			 type: 'POST',
 			 contentType: 'application/json',
-			 url: host+'/Sensoren/services/stores/getAllStoresToCountry',
+			 url: host+'/services/stores/getAllStoresToCountry',
 			 dataType: "json",
 			 data: JSON.stringify({"country_code": country
 			 		}),
@@ -71,7 +71,7 @@ function showDeparturesContent() {
 			 $.ajax({
 	        	 type: 'POST',
 	        	 contentType: 'application/json',
-	        	 url: host+'/Sensoren/services/departures/getAllDepartmentsToCountryAndStore',
+	        	 url: host+'/services/departures/getAllDepartmentsToCountryAndStore',
 	        	 dataType: "json",
 	        	 data: JSON.stringify({"store_id": store_id,
 	        		 "country": country
@@ -112,7 +112,7 @@ function showSensorsContent() {
 			 $.ajax({
 	        	 type: 'POST',
 	        	 contentType: 'application/json',
-	        	 url: host+'/Sensoren/services/sensors/getAllSensorsToStoreDepartment',
+	        	 url: host+'/services/sensors/getAllSensorsToStoreDepartment',
 	        	 dataType: "json",
 	        	 data: JSON.stringify({"store_id": store_id,
 	        		 "departure_id": departure_id

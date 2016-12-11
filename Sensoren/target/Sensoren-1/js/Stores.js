@@ -38,7 +38,7 @@ $(function(){
   	   	 $.ajax({
   	   	   	 type: 'POST',
   	   	   	 contentType: 'application/json',
-  	   	   	 url: host+'/Sensoren/services/stores/createStore',
+  	   	   	 url: host+'/services/stores/createStore',
   	   	   	 dataType: "json",
   	   	   	 data: JSON.stringify({"country_code": country_code,
   	   	   		 "store_number": store_number,
@@ -83,7 +83,7 @@ $(function(){
 	 		    		$("#editShowStores").append($("<option value='"+data.getAllStores[i].ID+"'>"+data.getAllStores[i].country_code +" " + data.getAllStores[i].store_number +"</option><br>"));
 	 		    	}
 	 		    },
-	 		    	url: host+'/Sensoren/services/stores/getAllStores'
+	 		    	url: host+'/services/stores/getAllStores'
 	        });
 	     }
   	   	 */
@@ -103,7 +103,7 @@ function editStores(){
     	 $.ajax({
            	 type: 'POST',
            	 contentType: 'application/json',
-           	 url: host+'/Sensoren/services/stores/editShowStore',
+           	 url: host+'/services/stores/editShowStore',
            	 dataType: "json",
            	 data: JSON.stringify({"id": editStoreID
            	 		}),
@@ -171,7 +171,7 @@ function editStores(){
  	 $.ajax({
         	 type: 'POST',
         	 contentType: 'application/json',
-        	 url: host+'/Sensoren/services/stores/editStore',
+        	 url: host+'/services/stores/editStore',
         	 dataType: "json",
         	 data: JSON.stringify({"id": editID,
         		 //"country_code": Laenderkuerzel,
@@ -229,7 +229,7 @@ function editStores(){
  		    	}
  		    	$("#deleteShowStores").append("<option selected>Bitte Markt auswaehlen</option>");
  		    },
- 		    	url: host+'/Sensoren/services/stores/getAllStores'
+ 		    	url: host+'/services/stores/getAllStores'
         });
      } 
   	*/
@@ -249,7 +249,7 @@ function editStores(){
     	    	 $.ajax({
     	    	 type: 'POST',
     	    	 contentType: 'application/json',
-    	    	 url: host+'/Sensoren/services/stores/deleteStore',
+    	    	 url: host+'/services/stores/deleteStore',
     	    	 dataType: "json",
     	    	 data: JSON.stringify({"id": StoreIdToDelete
     			 		}),

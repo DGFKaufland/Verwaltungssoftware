@@ -19,7 +19,7 @@ function showDepartureTypesToCountryContent() {
 		$.ajax({
 			 type: 'POST',
 			 contentType: 'application/json',
-			 url: host+'/Sensoren/services/departurestype/getAllDeparturesTypesToCountry',
+			 url: host+'/services/departurestype/getAllDeparturesTypesToCountry',
 			 dataType: "json",
 			 data: JSON.stringify({"country": country
 			 		}),

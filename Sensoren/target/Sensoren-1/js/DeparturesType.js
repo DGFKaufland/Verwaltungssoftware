@@ -32,7 +32,7 @@ $(function(){
   	   	$.ajax({
           	 type: 'POST',
           	 contentType: 'application/json',
-          	 url: host+'/Sensoren/services/departurestype/createDepartureType',
+          	 url: host+'/services/departurestype/createDepartureType',
           	 dataType: "json",
           	 data: JSON.stringify({
           		"country": departuretype_country,
@@ -92,7 +92,7 @@ function editDeparture(){
      	$.ajax({
            	 type: 'POST',
            	 contentType: 'application/json',
-           	 url: host+'/Sensoren/services/departurestype/editShowDepartureType',
+           	 url: host+'/services/departurestype/editShowDepartureType',
            	 dataType: "json",
            	 data: JSON.stringify({
            		"id": editDepartureTypeID
@@ -134,7 +134,7 @@ function editDeparture(){
    	 $.ajax({
     	 type: 'POST',
     	 contentType: 'application/json',
-    	 url: host+'/Sensoren/services/departurestype/editDepartureType',
+    	 url: host+'/services/departurestype/editDepartureType',
     	 dataType: "json",
     	 data: JSON.stringify({"id": editDepartureTypeID,
     		 "country": editCountry,
@@ -181,7 +181,7 @@ function editDeparture(){
     	    	 $.ajax({
     	    	 type: 'POST',
     	    	 contentType: 'application/json',
-    	    	 url: host+'/Sensoren/services/departurestype/deleteDepartureType',
+    	    	 url: host+'/services/departurestype/deleteDepartureType',
     	    	 dataType: "json",
     	    	 data: JSON.stringify({"id": DepartureTypeIdToDelete
     			 		}),

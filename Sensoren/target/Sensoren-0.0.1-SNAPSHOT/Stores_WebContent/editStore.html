@@ -70,7 +70,7 @@ function showEditStore_managerContent() {
 		    	}
 		    	$("#selectEditStore_manager").append("<option selected>Bitte HL auswaehlen</option>");
 		    },
-		    	url: host+'/Sensoren/services/users/getAllStoreManagers'
+		    	url: host+'/services/users/getAllStoreManagers'
     });
  }
 
@@ -84,7 +84,7 @@ function showEditSales_managerContent() {
 		    	}
 		    	$("#selectEditSales_manager").append("<option selected>Bitte VKL auswaehlen</option>");
 		    },
-		    	url: host+'/Sensoren/services/users/getAllSalesManagers'
+		    	url: host+'/services/users/getAllSalesManagers'
     });
  }
 
@@ -98,7 +98,7 @@ function showEditStore_leitstandContent() {
 		    	}
 		    	$("#selectEditStore_leitstand").append("<option selected>Bitte LS auswaehlen</option>");
 		    },
-		    	url: host+'/Sensoren/services/users/getAllLeitstand'
+		    	url: host+'/services/users/getAllLeitstand'
     });
  }
 */
@@ -109,7 +109,7 @@ function showEditStore_managerToCountryContent(LK){
 	$.ajax({
 		 type: 'POST',
 		 contentType: 'application/json',
-		 url: host+'/Sensoren/services/users/getAllStoreManagersForCountry',
+		 url: host+'/services/users/getAllStoreManagersForCountry',
 		 dataType: "json",
 		 data: JSON.stringify({"country": LK
 		 		}),
@@ -135,7 +135,7 @@ function showEditSales_managerToCountryContent(LK){
 	$.ajax({
 		 type: 'POST',
 		 contentType: 'application/json',
-		 url: host+'/Sensoren/services/users/getAllSalesManagersForCountry',
+		 url: host+'/services/users/getAllSalesManagersForCountry',
 		 dataType: "json",
 		 data: JSON.stringify({"country": LK
 		 		}),
@@ -161,7 +161,7 @@ function showEditStore_leitstandToCountryContent(LK){
 	$.ajax({
 		 type: 'POST',
 		 contentType: 'application/json',
-		 url: host+'/Sensoren/services/users/getAllLeitstandForCountry',
+		 url: host+'/services/users/getAllLeitstandForCountry',
 		 dataType: "json",
 		 data: JSON.stringify({"country": LK
 		 		}),

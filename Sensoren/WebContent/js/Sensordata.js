@@ -27,7 +27,7 @@ $(function(){
 		 $.ajax({
            	 type: 'POST',
            	 contentType: 'application/json',
-           	 url: host+'/Sensoren/services/sensordata/insertSensordata',
+           	 url: host+'/services/sensordata/insertSensordata',
            	 dataType: "json",
            	 data: JSON.stringify({
            		"logical_sensor_id": logical_sensor_id,

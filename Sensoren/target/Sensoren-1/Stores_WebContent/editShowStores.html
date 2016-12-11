@@ -19,7 +19,7 @@ function showStoresToCountryContent() {
 		$.ajax({
 			 type: 'POST',
 			 contentType: 'application/json',
-			 url: host+'/Sensoren/services/stores/getAllStoresToCountry',
+			 url: host+'/services/stores/getAllStoresToCountry',
 			 dataType: "json",
 			 data: JSON.stringify({"country_code": country
 			 		}),

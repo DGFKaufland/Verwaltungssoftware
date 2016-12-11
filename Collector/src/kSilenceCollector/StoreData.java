@@ -33,7 +33,7 @@ public class StoreData {
 	public void storeSensorData(String logiSensID, double value) {
 
 		try {
-			URL url = new URL("http://dgf-vsw.azurewebsites.net/Sensoren/services/sensordata/insertSensordata");
+			URL url = new URL("http://dgf-vsw.azurewebsites.net/services/sensordata/insertSensordata");
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setDoOutput(true);
 			conn.setRequestMethod("POST");

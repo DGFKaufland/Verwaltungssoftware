@@ -24,7 +24,7 @@ function showStoresContent() {
 			$.ajax({
 				 type: 'POST',
 				 contentType: 'application/json',
-				 url: host+'/Sensoren/services/stores/getAllStoresToCountry',
+				 url: host+'/services/stores/getAllStoresToCountry',
 				 dataType: "json",
 				 data: JSON.stringify({"country_code": country
 				 		}),
@@ -66,7 +66,7 @@ function showDeparturesContent() {
 			 $.ajax({
 	        	 type: 'POST',
 	        	 contentType: 'application/json',
-	        	 url: host+'/Sensoren/services/departures/getAllDepartmentsToCountryAndStore',
+	        	 url: host+'/services/departures/getAllDepartmentsToCountryAndStore',
 	        	 dataType: "json",
 	        	 data: JSON.stringify({"store_id": store_id,
 	        		 "country": country

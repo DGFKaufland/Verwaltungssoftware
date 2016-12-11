@@ -27,7 +27,7 @@ $(function(){
 			    	}
 			    	$("#selectCountry").append("<option selected>Bitte Land auswaehlen</option>");	
 			    },
-			    	url: host+'/Sensoren/services/stores/getAllCountries'
+			    	url: host+'/services/stores/getAllCountries'
 	    });
 	 }	
 	
@@ -53,7 +53,7 @@ $(function(){
   	   	 $.ajax({
   	   	   	 type: 'POST',
   	   	   	 contentType: 'application/json',
-  	   	   	 url: host+'/Sensoren/services/sensors/createSensor',
+  	   	   	 url: host+'/services/sensors/createSensor',
   	   	   	 dataType: "json",
   	   	   	 data: JSON.stringify({
   	   	   		 "store_id": store_number,
@@ -115,7 +115,7 @@ $(function(){
   				    	}
   				    	$("#editShowCountries").append("<option selected>Bitte Land auswaehlen</option>");	
   				    },
-  				    	url: host+'/Sensoren/services/stores/getAllCountries'
+  				    	url: host+'/services/stores/getAllCountries'
   		    });
   		 }	  	   
   	   
@@ -151,7 +151,7 @@ function editSensors(){
     	 $.ajax({
            	 type: 'POST',
            	 contentType: 'application/json',
-           	 url: host+'/Sensoren/services/sensors/getSensorToStoreDepartment',
+           	 url: host+'/services/sensors/getSensorToStoreDepartment',
            	 dataType: "json",
            	 data: JSON.stringify({
            		"id": editSensorID
@@ -218,7 +218,7 @@ function editSensors(){
    		$.ajax({
        	 type: 'POST',
        	 contentType: 'application/json',
-       	 url: host+'/Sensoren/services/sensors/editSensor',
+       	 url: host+'/services/sensors/editSensor',
        	 dataType: "json",
        	 data: JSON.stringify({"id": SensorID,
        		"manufacturer": editManufacturer,
@@ -277,7 +277,7 @@ function editSensors(){
 				    	}
 				    	$("#editShowCountries").append("<option selected>Bitte Land auswaehlen</option>");	
 				    },
-				    	url: host+'/Sensoren/services/stores/getAllCountries'
+				    	url: host+'/services/stores/getAllCountries'
 		    });
 		 }	  	   
   	 
@@ -297,7 +297,7 @@ function editSensors(){
     	    	 $.ajax({
     	    	 type: 'POST',
     	    	 contentType: 'application/json',
-    	    	 url: host+'/Sensoren/services/sensors/deleteSensor',
+    	    	 url: host+'/services/sensors/deleteSensor',
     	    	 dataType: "json",
     	    	 data: JSON.stringify({"id": SensorIdToDelete
     			 		}),

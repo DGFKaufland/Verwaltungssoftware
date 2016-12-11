@@ -26,7 +26,7 @@ public class JavaWebserviceClient {
 		
 		try {
 
-			URL url = new URL("http://localhost:8080/Sensoren/services/sensordata/insertSensordata");
+			URL url = new URL("http://localhost:8080/services/sensordata/insertSensordata");
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setDoOutput(true);
 			conn.setRequestMethod("POST");
@@ -83,7 +83,7 @@ public class JavaWebserviceClient {
  
 			// Step2: Now pass JSON File Data to REST Service
 			try {
-				URL url = new URL(host + "/Sensoren/services/sensordata/insertSensordata");
+				URL url = new URL(host + "/services/sensordata/insertSensordata");
 				URLConnection connection = url.openConnection();
 				connection.setDoOutput(true);
 				connection.setRequestProperty("Content-Type", "application/json");
