@@ -11,12 +11,17 @@ $(function(){
 	//Sensordaten in die Datenbank eintragen	
 	$('#btnInsertSensordata').unbind('click').click(function(){	
         $('#anzfeld').load('Sensordata_WebContent/insertSensordata.html');
+        // for testing
+        document.getElementById("logical_sensor_id").defaultValue = "kmunda_sens1";
     });
 	
 	
 	$('#btnInsertSensordataInDB').unbind('click').click(function(){		
 		insertSensorData();
-		$('#anzfeld').load('home.html');
+		 // for testing
+		 // $('#anzfeld').load('home.html');
+		 $('#anzfeld').load('Sensordata_WebContent/insertSensordata.html');
+	     document.getElementById("logical_sensor_id").defaultValue = "kmunda_sens1";
 	    });	 
 	
 	 function insertSensorData() {
@@ -34,7 +39,8 @@ $(function(){
            		"value": sensordata_value
            	 		}),
            	 success: function(data){
-           		 alert("Sensordaten erfolgreich in DB eingetragen!");
+           		 // removed for quicker testing
+           		 // alert("Sensordaten erfolgreich in DB eingetragen!");
            	 },
            	 error: function(textStatus){
            	 alert('Problem beim Schreiben von Sensordaten in die Datenbank: ' + textStatus);
