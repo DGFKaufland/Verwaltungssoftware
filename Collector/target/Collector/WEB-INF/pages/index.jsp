@@ -35,8 +35,7 @@
 			</div>
 
 			<div class="sidebar" role="navigation" id="testb">
-				<div class="collapse navbar-collapse" id="collapsed-navigation"
-					style="margin-top: 50px; align: top">
+				<div class="collapse navbar-collapse" id="collapsed-navigation" style="margin-top: 10px; margin-left: 10px; align: top">
 					<h4>Collector Service</h4>
 					<ul class="nav">
 						<li><div>
