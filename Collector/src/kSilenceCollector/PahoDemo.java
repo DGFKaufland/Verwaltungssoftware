@@ -19,7 +19,7 @@ public class PahoDemo implements MqttCallback {
 
 	public void doDemo() throws InterruptedException {
 		try {
-			client = new MqttClient(Status.mqttGateway, "Yownhan3");
+			client = new MqttClient(Status.mqttGatewayActive, "Yownhan3");
 			MqttConnectOptions options = new MqttConnectOptions();
 			options.setConnectionTimeout(5);
 

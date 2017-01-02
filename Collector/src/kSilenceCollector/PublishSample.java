@@ -10,7 +10,7 @@ public class PublishSample {
 
 	public void publish(String topic, String msg) throws InterruptedException {
 		try {
-			client = new MqttClient("tcp://iot.eclipse.org:1883", "publishJonas");
+			client = new MqttClient(Status.mqttGateway1, "publishJonas");
 			client.connect();
 
 			MqttMessage message = new MqttMessage();

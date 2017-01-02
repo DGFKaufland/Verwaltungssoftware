@@ -14,8 +14,8 @@ import java.util.Random;
 @Controller
 public class Main {
 	String message0 = "";
-	String message1 = "Sensordaten Sammlung wurde gestartet ... (aktueller Status siehe Haupseite)";
-	String message2 = "Die Datensammlung wurde beendet.";
+	String message1 = "Sensordaten-Sammlung ist aktiv...";
+	String message2 = "Die Sensordaten-Sammlung wurde beendet.";
 	String message3 = "Ein Sample wurde an tcp://iot.eclipse.org:1883 gesendet:<br><br>";
 	Queue<String> sampleQueue;
 
@@ -39,7 +39,7 @@ public class Main {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
 		mav.addObject("message", message0);
-		mav.addObject("gateway", Status.mqttGateway);
+		mav.addObject("gateway", Status.mqttGatewayActive);
 		return mav;
 	}
 	
@@ -50,15 +50,15 @@ public class Main {
 		} else
 			message0 = "keine Datensammlung aktiv<br>";
 		
-		if (Status.mqttGateway.equals("tcp://iot.eclipse.org:1883"))
-			Status.mqttGateway = "tcp://yowhanpi.ddns.net:1883";
+		if (Status.mqttGatewayActive == Status.mqttGateway1)
+			Status.mqttGatewayActive = Status.mqttGateway2;
 		else
-			Status.mqttGateway = "tcp://iot.eclipse.org:1883";
+			Status.mqttGatewayActive = Status.mqttGateway1;
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index");
 		mav.addObject("message", message0);
-		mav.addObject("gateway", Status.mqttGateway);
+		mav.addObject("gateway", Status.mqttGatewayActive);
 		return mav;
 	}
 	
@@ -78,7 +78,11 @@ public class Main {
 			Status.bCollectionRunning = true;
 		}
 
-		return new ModelAndView("start", "message", message1);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+		mav.addObject("message", message1);
+		mav.addObject("gateway", Status.mqttGatewayActive);
+		return mav;
 	}
 
 	@RequestMapping("/stop")
@@ -93,7 +97,11 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		return new ModelAndView("stop", "message", message2);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+		mav.addObject("message", message2);
+		mav.addObject("gateway", Status.mqttGatewayActive);
+		return mav;
 	}
 
 	@RequestMapping("/publish")

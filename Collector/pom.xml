@@ -9,12 +9,22 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>3.1.2.RELEASE</spring.version>
 		<jdk.version>1.7</jdk.version>
 	</properties>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>

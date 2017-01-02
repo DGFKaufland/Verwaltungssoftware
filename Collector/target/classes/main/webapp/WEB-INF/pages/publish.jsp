@@ -13,7 +13,7 @@
 		${message}
 		<h4>
 			<a href="publish.htm">Nochmal publishen</a> <br><br>
-			<a href="collector.htm">Zurueck zur Hauptseite</a>
+			<a href="collector.htm">Zurueck</a>
 		</h4>
 	</div>
 </body>

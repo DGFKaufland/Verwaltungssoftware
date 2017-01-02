@@ -12,7 +12,7 @@ public class ReceiveMqttSignal implements Runnable {
 
 	public void run() {
 		try {
-			System.out.println(threadName + ": " + "Listening on " + Status.mqttGateway + " ...");
+			System.out.println(threadName + ": " + "Listening on " + Status.mqttGatewayActive + " ...");
 			new PahoDemo().doDemo();
 			Status.bShutdown = true;
 		} catch (InterruptedException e) {
