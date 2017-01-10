@@ -45,8 +45,14 @@ public class TopicFetcher {
 					JSONObject jsonobject = (JSONObject) array.get(i);
 					long iID = (long) jsonobject.get("ID");
 					String sLSID = (String) jsonobject.get("LSID");
-					String sTopic_tmp = (String) jsonobject.get("LSID");
-					String sTopic = (sTopic_tmp).replace("_", "/");
+					String sTopic = (String) jsonobject.get("LSID");
+					String topic_tmp;
+					int lastSlashIndex = sTopic.lastIndexOf("_");
+					if (lastSlashIndex != -1)
+					{
+					    topic_tmp = sTopic.substring(0, lastSlashIndex + 1);
+						sTopic = topic_tmp.replace('_', '/').concat(sLSID);
+					}
 					System.out.println(iID + "     " + sTopic + "  " + sLSID);
 					Status.topics.put(sTopic, sLSID);
 				}

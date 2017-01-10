@@ -21,7 +21,9 @@ public class PahoDemo implements MqttCallback {
 		try {
 			client = new MqttClient(Status.mqttGatewayActive, "Yownhan3");
 			MqttConnectOptions options = new MqttConnectOptions();
-			options.setConnectionTimeout(5);
+			options.setConnectionTimeout(30);
+			options.setKeepAliveInterval(120);
+			options.setCleanSession(true);
 
 			// Set keySet = Database.topics.keySet();
 			// String[] topicList = keySet.toArray(new String[0]));
@@ -29,7 +31,10 @@ public class PahoDemo implements MqttCallback {
 			Set<String> tmp = Status.topics.keySet();
 			String topicList[] = tmp.toArray(new String[tmp.size()]);
 
-			System.out.println("Subscribing to: " + Status.topics.keySet());
+			for (String topic: topicList) {           
+				System.out.println("Subscribing to: " + topic);
+		    }
+			
 			client.setCallback(this);
 			client.connect(options);
 			client.subscribe(topicList);
