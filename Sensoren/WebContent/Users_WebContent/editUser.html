@@ -1,0 +1,298 @@
+<script>
+
+$( document ).ready(function() {
+	
+	var ID = localStorage.getItem("editUserID");
+	var Land = localStorage.getItem("editCountryID");
+	var Anrede = localStorage.getItem("editAnrede");
+	var Vorname = localStorage.getItem("editVorname");
+	var Nachname = localStorage.getItem("editNachname");
+	var Email = localStorage.getItem("editEmail");
+	var Telefon = localStorage.getItem("editTelefon");
+	var Rolle = localStorage.getItem("editRole");
+	var MobileUserRole = localStorage.getItem("editMobileUserRole");
+	var MobileContactID = localStorage.getItem("editMobileContactID");
+		
+	
+selectContent(ID,Land,Anrede,Vorname,Nachname,Email,Telefon,Rolle, MobileUserRole, MobileContactID);
+
+});
+
+function selectContent(ID,Land,Anrede,Vorname,Nachname,Email,Telefon,Rolle, MobileUserRole, MobileContactID){
+	//Es wird eine Verzoegerung benötigt, da der Content sonst nicht gesetz werden kann	
+		setTimeout(wait, 20);
+		function wait(){
+			$('#editSelectCountry').val(Land);
+			$('#editSelectAnrede').val(Anrede);
+			$('#editSelectRole').val(Rolle);
+			$('#editSelectMobileUserRole').val(MobileUserRole);
+			
+			editUserForm.editUser_firstname.value=Vorname;
+			editUserForm.editUser_lastname.value=Nachname;
+			editUserForm.editUser_email.value=Email;
+			editUserForm.editUser_phone.value=Telefon;
+			editUserForm.editUserId.value=ID;
+			editUserForm.editMobileContactId.value=MobileContactID;
+	
+			}			
+}
+
+function showSalutation() {
+	 
+	  $('#editSelectAnrede').val("Bitte Anrede auswaehlen");
+	  editUserForm.editUser_firstname.value='';
+	  editUserForm.editUser_lastname.value='';
+	  editUserForm.editUser_email.value='';
+	  editUserForm.editUser_phone.value='';
+	  $('#editSelectRole').val("Bitte Rolle auswaehlen");
+	  $('#editSelectMobileUserRole').val("Bitte MobileUser Rolle auswaehlen");
+	  
+	
+	 if($( "#editSelectCountry option:selected").text() == "Bitte Land auswaehlen"){
+		 document.getElementById('divSelectSalutation').style.display = 'none';
+		 document.getElementById('divFirstname').style.display = 'none';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		
+		 
+   }
+	else{ 
+		 document.getElementById('divSelectSalutation').style.display = '';
+		 document.getElementById('divFirstname').style.display = 'none';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+
+function showFirstname() {
+	
+	  editUserForm.editUser_firstname.value='';
+	  editUserForm.editUser_lastname.value='';
+	  editUserForm.editUser_email.value='';
+	  editUserForm.editUser_phone.value='';
+	  $('#editSelectRole').val("Bitte Rolle auswaehlen");
+	  $('#editSelectMobileUserRole').val("Bitte MobileUser Rolle auswaehlen");
+	 
+	 if($( "#editSelectAnrede option:selected").text() == "Bitte Anrede auswaehlen"){
+		 
+		 document.getElementById('divFirstname').style.display = 'none';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divFirstname').style.display = '';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showLastname() {
+	
+	  editUserForm.editUser_lastname.value='';
+	  editUserForm.editUser_email.value='';
+	  editUserForm.editUser_phone.value='';
+	  $('#editSelectRole').val("Bitte Rolle auswaehlen");
+	  $('#editSelectMobileUserRole').val("Bitte MobileUser Rolle auswaehlen");
+	 
+	if ( document.getElementById('editUser_firstname').value.length <= 0) {
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+ }
+	else{ 
+		 document.getElementById('divLastname').style.display = '';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showEmail() {
+	
+	  editUserForm.editUser_email.value='';
+	  editUserForm.editUser_phone.value='';
+	  $('#editSelectRole').val("Bitte Rolle auswaehlen");
+	  $('#editSelectMobileUserRole').val("Bitte MobileUser Rolle auswaehlen");
+	 
+	if ( document.getElementById('editUser_lastname').value.length <= 0) {
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+ }
+	else{ 
+		 document.getElementById('divEmail').style.display = '';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showPhone() {
+	
+	  editUserForm.editUser_phone.value='';
+	  $('#editSelectRole').val("Bitte Rolle auswaehlen");
+	  $('#editSelectMobileUserRole').val("Bitte MobileUser Rolle auswaehlen");
+	 
+	if ( document.getElementById('editUser_email').value.length <= 0) {
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+ }
+	else{ 
+		 document.getElementById('divPhone').style.display = '';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showRole() {
+	
+	  $('#editSelectRole').val("Bitte Rolle auswaehlen");
+	  $('#editSelectMobileUserRole').val("Bitte MobileUser Rolle auswaehlen");
+	 
+	if ( document.getElementById('editUser_phone').value.length <= 0) {
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+ }
+	else{ 
+		 document.getElementById('divSelectRole').style.display = '';
+		 document.getElementById('divSelectMobileUser').style.display = 'none';
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+
+function showMobileUserRole() {
+	
+	$('#editSelectMobileUserRole').val("Bitte MobileUser Rolle auswaehlen");
+	 
+	if($( "#selectRole option:selected").text() == "Bitte Rolle auswaehlen"){
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divSelectMobileUser').style.display = ''; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showSaveButton() {
+	 
+	if($( "#editSelectRole option:selected").text() == "Bitte MobileUser Rolle auswaehlen"){
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+ }
+	else{ 
+		 document.getElementById('divShowSaveButton').style.display = '';
+	} 
+}
+
+
+
+</script>
+
+<h1 class="page-header">Nutzer updaten</h1>
+
+<form name="editUserForm" role="form">
+<div class="form-group">
+
+
+<div id="divSelectCountry">
+<h3>Land</h3>
+          <select id="editSelectCountry" class="form-control" onchange="showSalutation()">
+    		<option selected>Bitte Land auswaehlen</option>
+    		<option>DE</option>
+    		<option>PL</option>
+    		<option>RO</option>
+    		<option>CZ</option>
+    		<option>HR</option>
+    		<option>BG</option>
+    		<option>SK</option>
+  		   </select>   
+</div>
+<div id="divSelectSalutation">
+<h3>Anrede</h3>
+          <select id="editSelectAnrede" class="form-control" onchange="showFirstname()">
+    		<option selected>Bitte Anrede auswaehlen</option>
+    		<option>Herr</option>
+    		<option>Frau</option>
+  		   </select>   
+</div>
+<div id="divFirstname">
+<h3>Vorname</h3>
+ 		<input type="text" name="editUser_firstname" id="editUser_firstname" class="form-control" oninput="showLastname()"/> 
+</div>
+<div id="divLastname">
+<h3>Nachname</h3>
+		<input type="text" name="editUser_lastname" id="editUser_lastname" class="form-control" oninput="showEmail()"/>
+</div>
+<div id="divEmail">
+<h3>eMail</h3>
+           <input type="email" name="editUser_email" id="editUser_email" class="form-control" oninput="showPhone()"/> 
+ </div>
+ <div id="divPhone">          
+<h3>Telefon</h3>
+           <input type="text" name="editUser_phone" id="editUser_phone" class="form-control" oninput="showRole()"/> 
+</div>
+<div id="divSelectRole">
+<h3>Role</h3>
+           <select id="editSelectRole" class="form-control" onchange="showMobileUserRole()">           	
+           	<option selected>Bitte Rolle auswaehlen</option>
+           	<option>WBL</option>
+    		<option>HL</option>
+    		<option>VKL</option>
+    		<option>MA</option>
+    		<option>LS</option>
+  		   </select> 		   
+</div>
+
+<div id="divSelectMobileUser">
+<h3>Mobile User Rolle</h3>
+           <select id="editSelectMobileUserRole" class="form-control" onchange="showSaveButton()">           	
+           	<option selected>Bitte MobileUser Rolle auswaehlen</option>
+           	<option>ja</option>
+    		<option>nein</option>
+  		   </select> 		   
+</div>  
+
+  		  
+<div class="form-group" id="divShowSaveButton">
+<h3>User ID</h3>
+            <input type="text" name="editUserId" id="editUserId" class="form-control" readonly />   
+    <br><br>
+<h3>MobileContact ID</h3>
+            <input type="text" name="editMobileContactId" id="editMobileContactId" class="form-control" readonly /> 
+    <br><br>
+	<button type="button" id="btnEditUserInDB" class="btn btn-default btn-lg">User updaten</button>
+</div>
+</div>
+</form>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/Users.js"></script>

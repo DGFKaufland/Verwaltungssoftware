@@ -1,0 +1,129 @@
+<script>
+
+var host = window.location.origin;
+
+$( document ).ready(function() {
+	 document.getElementById('divSelectStores').style.display = 'none';
+	 document.getElementById('divSelectDepartures').style.display = 'none';
+	 document.getElementById('divShowBtnDeleteDepartures').style.display = 'none';
+ });
+ 
+ 
+////Werte nur zu bestimmten Zeitpunkten dem User anzeigen////
+function showStoresContent() {
+	 
+	 if($( "#selectDeleteCountry option:selected").text() == "Bitte Land auswaehlen"){
+			 document.getElementById('divSelectStores').style.display = 'none';
+			 document.getElementById('divSelectDepartures').style.display = 'none'; 
+			 document.getElementById('divShowBtnDeleteDepartures').style.display = 'none';		        
+	      }
+		else{
+			 
+			var country = $( "#selectDeleteCountry option:selected").text();
+			
+			$.ajax({
+				 type: 'POST',
+				 contentType: 'application/json',
+				 url: host+'/services/stores/getAllStoresToCountry',
+				 dataType: "json",
+				 data: JSON.stringify({"country_code": country
+				 		}),
+				 success: function(data){
+
+		   		 		$('#deleteShowStores').find('option').remove().end();
+				    	for(var i=0;i<data.length;i++){
+				    		$("#deleteShowStores").append($("<option value='"+data[i].id+"'>"+ data[i].store_number +" </option><br>"));
+				    	}
+				    	$("#deleteShowStores").append("<option selected>Bitte Markt auswaehlen</option>");
+
+				    	 document.getElementById('divSelectStores').style.display = '';
+		        		 document.getElementById('divSelectDepartures').style.display = 'none'; 
+		    			 document.getElementById('divShowBtnDeleteDepartures').style.display = 'none';   		
+				 },
+				 error: function(jqXHR, textStatus, errorThrown){
+				 alert('StorestoCountry laden error: ' + textStatus);
+				 }
+				 });
+			
+		} 
+	} 
+ 
+
+////Werte nur zu bestimmten Zeitpunkten dem User anzeigen////
+function showDeparturesContent() {
+	 
+	 if($( "#deleteShowStores option:selected").text() == "Bitte Markt auswaehlen"){
+			 document.getElementById('divSelectDepartures').style.display = 'none'; 
+			 document.getElementById('divShowBtnDeleteDepartures').style.display = 'none';		        
+	      }
+		else{
+			 
+			var store_id = $( "#deleteShowStores option:selected").val();
+			var country =  $( "#selectDeleteCountry option:selected").text();
+
+			 $.ajax({
+	        	 type: 'POST',
+	        	 contentType: 'application/json',
+	        	 url: host+'/services/departures/getAllDepartmentsToCountryAndStore',
+	        	 dataType: "json",
+	        	 data: JSON.stringify({"store_id": store_id,
+	        		 "country": country
+	        	 		}),
+	        	 success: function(data){
+	        		 
+	        		 $('#deleteShowDepartures').find('option').remove().end();
+		 		    	for(var i=0;i<data.getAllDepartmentsToCountryAndStore.length;i++){
+		 		    		$("#deleteShowDepartures").append($("<option value='"+data.getAllDepartmentsToCountryAndStore[i].ID+"'>"+data.getAllDepartmentsToCountryAndStore[i].departure_type_name +"</option><br>"));
+		 		    	}
+		 		    	$("#deleteShowDepartures").append("<option selected>Bitte Abteilung auswaehlen</option>");
+	        		 
+	        		 document.getElementById('divSelectDepartures').style.display = ''; 
+	    			 document.getElementById('divShowBtnDeleteDepartures').style.display = 'none';   		 
+	   
+	        	 },
+	        	 error: function(textStatus){
+	        	 alert('Problem beim Abteilungen laden: ' + textStatus);
+	        	 }
+	        	 });
+		} 
+	}
+
+function showButtonDeleteDepartures() {
+	 
+	if($( "#deleteShowDepartures option:selected").text() == "Bitte Abteilung auswaehlen"){
+		 document.getElementById('divSelectDepartures').style.display = ''; 
+		 document.getElementById('divShowBtnDeleteDepartures').style.display = 'none';		        
+     }
+	else{ 
+		 document.getElementById('divSelectDepartures').style.display = ''; 
+		 document.getElementById('divShowBtnDeleteDepartures').style.display = '';	
+					 
+	}	 
+}
+
+</script>
+
+
+
+<h1 class="page-header">Abteilungen/Markt loeschen</h1>
+
+		<div class="form-group"  id="divSelectCountries">
+            <label>Land auswaehlen</label>
+                <select id="selectDeleteCountry" name="selectDeleteCountry" class="form-control" onchange="showStoresContent()"></select>
+        </div>
+        <div class="form-group"  id="divSelectStores">
+            <label>Markt auswaehlen</label>
+                <select id="deleteShowStores" name="selectEditStores" class="form-control" onchange="showDeparturesContent()"></select>
+        </div>
+        <div class="form-group" id="divSelectDepartures">
+            <label>Abteilung auswaehlen</label>
+                <select id="deleteShowDepartures" name="selectEditDepartures" class="form-control" onchange="showButtonDeleteDepartures()"></select>
+        </div>
+        
+        <div class="form-group" id="divShowBtnDeleteDepartures">
+            <button id="btnDeleteDeparturesToStore" type="button" class="btn btn-primary btn-lg">Abteilung/Markt loeschen</button>
+        </div>
+         
+<!-- Custom Theme JavaScript -->
+ <script src="js/DeparturesStores.js"></script>
+ 

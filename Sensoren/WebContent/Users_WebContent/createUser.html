@@ -1,0 +1,226 @@
+<script>
+$( document ).ready(function() { 
+	 document.getElementById('divSelectSalutation').style.display = 'none';
+	 document.getElementById('divFirstname').style.display = 'none';
+	 document.getElementById('divLastname').style.display = 'none';
+	 document.getElementById('divEmail').style.display = 'none';
+	 document.getElementById('divPhone').style.display = 'none';
+	 document.getElementById('divSelectRole').style.display = 'none';
+	 document.getElementById('divShowSaveButton').style.display = 'none';
+	 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+});
+
+
+function showSalutation() {
+	 
+	 if($( "#selectCountry option:selected").text() == "Bitte Land auswaehlen"){
+		 document.getElementById('divSelectSalutation').style.display = 'none';
+		 document.getElementById('divFirstname').style.display = 'none';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+    }
+	else{ 
+		 document.getElementById('divSelectSalutation').style.display = '';
+		 document.getElementById('divFirstname').style.display = 'none';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+
+function showFirstname() {
+	 
+	 if($( "#selectAnrede option:selected").text() == "Bitte Anrede auswaehlen"){
+		 document.getElementById('divFirstname').style.display = 'none';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+   }
+	else{ 
+		 document.getElementById('divFirstname').style.display = '';
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showLastname() {
+	 
+	if ( document.getElementById('user_firstname').value.length <= 0) {
+		 document.getElementById('divLastname').style.display = 'none';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divLastname').style.display = '';
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showEmail() {
+	 
+	if ( document.getElementById('user_lastname').value.length <= 0) {
+		 document.getElementById('divEmail').style.display = 'none';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divEmail').style.display = '';
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showPhone() {
+	 
+	if ( document.getElementById('user_email').value.length <= 0) {
+		 document.getElementById('divPhone').style.display = 'none';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divPhone').style.display = '';
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+function showRole() {
+	 
+	if ( document.getElementById('user_phone').value.length <= 0) {
+		 document.getElementById('divSelectRole').style.display = 'none';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divSelectRole').style.display = '';
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+
+function showMobileUserRole() {
+	 
+	if($( "#selectRole option:selected").text() == "Bitte Rolle auswaehlen"){
+		 document.getElementById('divSelectMobileUser').style.display = 'none'; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divSelectMobileUser').style.display = ''; 
+		 document.getElementById('divShowSaveButton').style.display = 'none';
+	} 
+}
+
+
+
+function showSaveButton() {
+	 
+	if($( "#selectRole option:selected").text() == "Bitte MobileUser Rolle auswaehlen"){
+		 document.getElementById('divShowSaveButton').style.display = 'none';		        
+  }
+	else{ 
+		 document.getElementById('divShowSaveButton').style.display = '';
+	} 
+}
+
+
+</script>
+
+
+
+<h1 class="page-header">neuen User anlegen</h1>
+<div class="form-group">
+
+<div id="divSelectCountry">
+<h3>Land</h3>
+          <select id="selectCountry" class="form-control" onchange="showSalutation()">
+    		<option selected>Bitte Land auswaehlen</option>
+    		<option>DE</option>
+    		<option>PL</option>
+    		<option>RO</option>
+    		<option>CZ</option>
+    		<option>HR</option>
+    		<option>BG</option>
+    		<option>SK</option>
+  		   </select>   
+</div>
+<div id="divSelectSalutation">
+<h3>Anrede</h3>
+          <select id="selectAnrede" class="form-control" onchange="showFirstname()">
+    		<option selected>Bitte Anrede auswaehlen</option>
+    		<option>Herr</option>
+    		<option>Frau</option>
+  		   </select>   
+</div>
+<div id="divFirstname">
+<h3>Vorname</h3>
+ 		<input type="text" name="user_firstname" id="user_firstname" class="form-control" oninput="showLastname()"/> 
+</div>
+<div id="divLastname">
+<h3>Nachname</h3>
+		<input type="text" name="user_lastname" id="user_lastname" class="form-control" oninput="showEmail()"/>
+</div>
+<div id="divEmail">
+<h3>eMail</h3>
+           <input type="email" name="user_email" id="user_email" class="form-control" oninput="showPhone()"/> 
+ </div>
+ <div id="divPhone">          
+<h3>Telefon</h3>
+           <input type="text" name="user_phone" id="user_phone" class="form-control" oninput="showRole()"/> 
+</div>
+<div id="divSelectRole">
+<h3>Rolle</h3>
+           <select id="selectRole" class="form-control" onchange="showMobileUserRole()">           	
+           	<option selected>Bitte Rolle auswaehlen</option>
+           	<option>WBL</option>
+    		<option>HL</option>
+    		<option>VKL</option>
+    		<option>MA</option>
+    		<option>LS</option>
+  		   </select> 		   
+</div>
+
+<div id="divSelectMobileUser">
+<h3>Mobile User Rolle</h3>
+           <select id="selectMobileUserRole" class="form-control" onchange="showSaveButton()">           	
+           	<option selected>Bitte MobileUser Rolle auswaehlen</option>
+           	<option>ja</option>
+    		<option>nein</option>
+  		   </select> 		   
+</div>  			  
+    
+</div>
+<div class="form-group" id="divShowSaveButton">
+	<button type="button" id="btnWriteUserInDB" class="btn btn-default btn-lg">User anlegen</button>
+</div>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/Users.js"></script>
